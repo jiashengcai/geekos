@@ -1,0 +1,8 @@
+
+megs: 8
+boot: a
+floppya: 1_44=fd.img, status=inserted
+log: ./bochs.out
+#Project0 1-4还需要ata串口驱动器，需要加上：
+ata0-master: type=disk, path=diskc.img, mode=flat, cylinders=40, heads=8, spt=64
+

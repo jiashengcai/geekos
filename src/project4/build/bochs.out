@@ -1,0 +1,97 @@
+00000000000i[     ] Bochs x86 Emulator 2.3.7
+00000000000i[     ]   Build from CVS snapshot, on June 3, 2008
+00000000000i[     ] System configuration
+00000000000i[     ]   processors: 1 (cores=1, HT threads=1)
+00000000000i[     ]   A20 line support: yes
+00000000000i[     ]   APIC support: yes
+00000000000i[     ] CPU configuration
+00000000000i[     ]   level: 6
+00000000000i[     ]   SMP support: no
+00000000000i[     ]   FPU support: yes
+00000000000i[     ]   MMX support: yes
+00000000000i[     ]   SSE support: 4
+00000000000i[     ]   CLFLUSH support: yes
+00000000000i[     ]   VME support: yes
+00000000000i[     ]   3dnow! support: yes
+00000000000i[     ]   PAE support: yes
+00000000000i[     ]   PGE support: yes
+00000000000i[     ]   PSE support: yes
+00000000000i[     ]   x86-64 support: yes
+00000000000i[     ]   SEP support: yes
+00000000000i[     ]   MWAIT support: no
+00000000000i[     ]   XSAVE support: no
+00000000000i[     ]   AES support: no
+00000000000i[     ] Optimization configuration
+00000000000i[     ]   Guest2HostTLB support: yes
+00000000000i[     ]   RepeatSpeedups support: yes
+00000000000i[     ]   Icache support: yes
+00000000000i[     ]   Trace cache support: yes
+00000000000i[     ]   Fast function calls: yes
+00000000000i[     ] Devices configuration
+00000000000i[     ]   ACPI support: no
+00000000000i[     ]   NE2000 support: yes
+00000000000i[     ]   PCI support: yes
+00000000000i[     ]   SB16 support: yes
+00000000000i[     ]   USB support: yes
+00000000000i[     ]   VGA extension support: vbe 
+00000000000i[MEM0 ] allocated memory at 0xb71bd008. after alignment, vector=0xb71be000
+00000000000i[MEM0 ] 3.00MB
+00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/usr/share/bochs/BIOS-bochs-latest')
+00000000000i[MEM0 ] rom at 0xc0000/39936 ('/usr/share/bochs/VGABIOS-lgpl-latest')
+00000000000i[APIC?] set APIC ID to 0
+00000000000i[APIC0] 80686
+00000000000i[APIC0] local apic in CPU apicid=00 initializing
+00000000000i[     ] lt_dlhandle is 0x99e38f0
+00000000000i[PLGIN] loaded plugin libbx_unmapped.la
+00000000000i[     ] lt_dlhandle is 0x99e3968
+00000000000i[PLGIN] loaded plugin libbx_biosdev.la
+00000000000i[     ] lt_dlhandle is 0x99e4330
+00000000000i[PLGIN] loaded plugin libbx_cmos.la
+00000000000i[     ] lt_dlhandle is 0x99e4440
+00000000000i[PLGIN] loaded plugin libbx_dma.la
+00000000000i[     ] lt_dlhandle is 0x99e49f8
+00000000000i[PLGIN] loaded plugin libbx_pic.la
+00000000000i[     ] lt_dlhandle is 0x99e5168
+00000000000i[PLGIN] loaded plugin libbx_vga.la
+00000000000i[     ] lt_dlhandle is 0x99e59d0
+00000000000i[PLGIN] loaded plugin libbx_floppy.la
+00000000000i[     ] lt_dlhandle is 0x99e61c0
+00000000000i[PLGIN] loaded plugin libbx_harddrv.la
+00000000000i[     ] lt_dlhandle is 0x99e6338
+00000000000i[PLGIN] loaded plugin libbx_keyboard.la
+00000000000i[     ] lt_dlhandle is 0x99f7f20
+00000000000i[PLGIN] loaded plugin libbx_serial.la
+00000000000i[     ] lt_dlhandle is 0x99f9090
+00000000000i[PLGIN] loaded plugin libbx_parallel.la
+00000000000i[     ] lt_dlhandle is 0x99f9668
+00000000000i[PLGIN] loaded plugin libbx_extfpuirq.la
+00000000000i[     ] lt_dlhandle is 0x99f9b00
+00000000000i[PLGIN] loaded plugin libbx_gameport.la
+00000000000i[     ] lt_dlhandle is 0x99fa008
+00000000000i[PLGIN] loaded plugin libbx_speaker.la
+00000000000i[IOAP ] initializing I/O APIC
+00000000000i[IOAP ] set APIC ID to 1
+00000000000i[MEM0 ] Register memory access handlers: 0xfec00000 - 0xfec00fff
+00000000000i[CMOS ] Using local time for initial clock
+00000000000i[CMOS ] Setting initial clock to: Thu Mar 29 18:43:16 2018 (time0=1522320196)
+00000000000i[DMA  ] channel 4 used by cascade
+00000000000i[DMA  ] channel 2 used by Floppy Drive
+00000000000i[FDD  ] tried to open 'fd.img' read/write: 没有那个文件或目录
+00000000000i[FDD  ] tried to open 'fd.img' read only: 没有那个文件或目录
+00000000000i[MEM0 ] Register memory access handlers: 0x000a0000 - 0x000bffff
+00000000000i[XGUI ] test_alloc_colors: 16 colors available out of 16 colors tried
+00000000000i[XGUI ] font 8 wide x 16 high, display depth = 24
+00000000000i[VGA  ] interval=300000
+00000000000i[MEM0 ] Register memory access handlers: 0xe0000000 - 0xe07fffff
+00000000000i[VGA  ] VBE Bochs Display Extension Enabled
+00000000000i[PLGIN] init_mem of 'harddrv' plugin device by virtual method
+00000000000i[PLGIN] init_mem of 'keyboard' plugin device by virtual method
+00000000000i[PLGIN] init_mem of 'serial' plugin device by virtual method
+00000000000i[PLGIN] init_mem of 'parallel' plugin device by virtual method
+00000000000i[PLGIN] init_mem of 'extfpuirq' plugin device by virtual method
+00000000000i[PLGIN] init_mem of 'gameport' plugin device by virtual method
+00000000000i[PLGIN] init_mem of 'speaker' plugin device by virtual method
+00000000000i[PLGIN] init_dev of 'harddrv' plugin device by virtual method
+00000000000i[HD   ] HD on ata0-0: 'diskc.img' 'flat' mode 
+00000000000p[HD   ] >>PANIC<< ata0-0: could not open hard drive image file 'diskc.img'
+00000000000i[CTRL ] quit_sim called with exit code 1
