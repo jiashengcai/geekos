@@ -1,4 +1,4 @@
-﻿[TOC]
+ ﻿[TOC] 
 # 概述
 操作系统（英语：operating system，缩写：OS）是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的内核与基石。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互的操作界面。
 计算机操作系统原理课程是计算机科学与技术及相关专业的核心课程之一，对理论与实践要求都很高，历来为计算机及信息学科所重视。操作系统课程设计正是该课程实践环节的集中表现，不仅可使学生巩固理论学习的概念、原理、设计、算法及数据结构，同时培养开发大型软件所应拥有的系统结构设计和软件工程素养。对该课程考核体系的构建可以促进学 生设计能力、创新能力和科学素养的全面提升。
@@ -41,17 +41,17 @@ ata0-master: type=disk, path=diskc.img, mode=flat, cylinders=40, heads=8, spt=64
 ```
 #前导知识
 
-##一、全局描述符表GDT（Global Descriptor Table）
+## 一、全局描述符表GDT（Global Descriptor Table）
  在整个系统中，全局描述符表GDT只有一张(一个处理器对应一个GDT)，GDT可以被放在内存的任何位置，但CPU必须知道GDT的入口，也就是基地址放在哪里，Intel的设计者门提供了一个寄存器GDTR用来存放GDT的入口地址，程序员将GDT设定在内存中某个位置之后，可以通过LGDT指令将GDT的入口地址装入此积存器，从此以后，CPU就根据此寄存器中的内容作为GDT的入口来访问GDT了。GDTR中存放的是GDT在内存中的基地址和其表长界限。
-##二、段选择子（Selector）
+## 二、段选择子（Selector）
 访问全局描述符表是通过“段选择子” 来完成的。段选择子共计16位，如图：
 ![Selector](https://img-blog.csdn.net/20180419153235885?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NhY2FjYWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 段选择子包括三部分：描述符索引（index）、TI、请求特权级（RPL）。index（描述符索引）部分表示所需要的段的描述符在描述符表的位置，由这个位置再根据在GDTR中存储的描述符表基址就可以找到相应的LDT描述符。段选择子中的TI值只有一位0或1，0代表选择子是在GDT，1代表选择子是在LDT。请求特权级（RPL）则代表选择子的特权级，共有4个特权级（0级、1级、2级、3级）。
 
-##三、局部描述符表LDT（Local Descriptor Table）
+## 三、局部描述符表LDT（Local Descriptor Table）
 
    ![LDT](https://img-blog.csdn.net/20180419153222867?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NhY2FjYWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-##四、CPU访问控制
+## 四、CPU访问控制
    Intel的x86处理器是通过Ring级别来进行访问控制的，级别共分4层，从Ring0到Ring3（后面简称R0、R1、R2、R3）。R0层拥有最高的权限，R3层拥有最低的权限。按照Intel原有的构想，应用程序工作在R3层，只能访问R3层的数据；操作系统工作在R0层，可以访问所有层的数据；而其他驱动程序位于R1、R2层，每一层只能访问本层以及权限更低层的数据。
     这样操作系统工作在最核心层，没有其他代码可以修改它；其他驱动程序工作在R1、R2层，有要求则向R0层调用，这样可以有效保障操作系统的安全性。但现在的OS，包括Windows和Linux都没有采用4层权限，而只是使用2层——R0层和R3层，分别来存放操作系统数据和应用程序数据，
 
