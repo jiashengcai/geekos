@@ -1,30 +1,39 @@
-﻿[TOC]
+[toc] 
 # 概述
 操作系统（英语：operating system，缩写：OS）是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的内核与基石。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互的操作界面。
 计算机操作系统原理课程是计算机科学与技术及相关专业的核心课程之一，对理论与实践要求都很高，历来为计算机及信息学科所重视。操作系统课程设计正是该课程实践环节的集中表现，不仅可使学生巩固理论学习的概念、原理、设计、算法及数据结构，同时培养开发大型软件所应拥有的系统结构设计和软件工程素养。对该课程考核体系的构建可以促进学 生设计能力、创新能力和科学素养的全面提升。
 #	实验环境
-实验代码	GeekOS-0.3.0
-硬件模拟器	BOCHS x86 Emulator 2.3.7
-Linux操作系统	Linux发行版Ubuntu9.04
-虚拟机	Vmware12.5.7 build-5813279
-主机系统	Windows10,64-bit
-计算机硬件	X86 PC
+实验代码|	GeekOS-0.3.0
+----|------
+硬件模拟器 |	BOCHS x86 Emulator 2.3.7
+Linux操作系统 |	Linux发行版Ubuntu9.04
+虚拟机 |	Vmware12.5.7 build-5813279
+主机系统 |	Windows10,64-bit
+计算机硬件 |	X86 PC
 
 ## GeekOS-0.3.0
 基于X86的GeekOS教学型类Linux操作系统.GeekOS主要用于操作系统课程设计,目的是使学生能够实际动手参与到一个操作系统的开发工作中学生可以在Linux或Unix环境或/windows下使用BochsPC模拟器进行开发,且其针对进程、文件系统、存储管理等操作系统核心内容分别设计了7个难度逐渐增加的项目供教师选择.出于教学目的,这个系统内核设计简单,让学生易于阅读、设计和添加代码,但它又涵盖了操作系统课程的核心内容,能够满足操作系统课程教学的需求,却又兼备实用性,它可以运行在真正的X86PC硬件平台.GeekOS由一个基本的操作系统内核作为基础,已经实现如下功能:
+
 (1)	操作系统与硬件之间的所有必备接口。
+
 (2)	系统引导、实模式到保护模式的转换、中断调用及异常处理。
+
 (3)	基于段式的内存管理。
+
 (4)	内核进程以及FIFO进程调度算法。
+
 (5)	基本的输入输出:键盘作为输入设备,显示器作为输出设备。
+
 (6)	只读文件系统PFAT:用于存放用户程序。
+
 目前，除上述所列的之外，还缺少虚拟内存、存储设备驱动和文件系统。在GeekOS中，使用分段机制实现了用户模式任务的内存保护。为了克服在存储设备和文件系统方面的欠缺，GeekOS提供了一个种机制以实现将用户程序编译成直接链接内核的数据对象。这种技术也可以用来实现基于RAM的文件系统。
 ##	Bochs和Vmware介绍
 Bochs是一个x86硬件平台的开源模拟器。它可以模拟各种硬件的配置。Bochs模拟的是整个PC平台，包括I/O设备、内存和BIOS。更为有趣的是，甚至可以不使用PC硬件来运行Bochs。事实上，它可以在任何编译运行Bochs的平台上模拟x86硬件。通过改变配置，可以指定使用的CPU(386、486或者586)，以及内存大小等。一句话，Bochs是电脑里的“PC”。根据需要，Bochs还可以模拟多台PC，此外，它甚至还有自己的电源按钮。
 VMWare虚拟机软件是一个“虚拟PC”软件，它使你可以在一台机器上同时运行二个或更多Windows、DOS、LINUX系统。与“多启动”系统相比，VMWare采用了完全不同的概念。多系统在一个时刻只能运行一个系统，在系统切换时需要重新启动机器。
-##开发过程
-为顺利的进行课程设计开发，避免出现软件版本不兼容导致一系列问题，使用了指导老师提供的虚拟机镜像以及虚拟机软件Vmware，虚拟机操作系统为Ubuntu9，其中包含了一份geekOS源码，以及安装好的Bochs硬件模拟器。
-###编译运行
+## 开发过程
+为顺利的进行课程设计开发，避免出现软件版本不兼容导致一系列问题，使用了指导老师提供的虚拟机镜像以及虚拟机软件Vmware，虚拟机操作系统为Ubuntu9，其中包含了一份geekOS源码，以及安装好的Bochs硬件模拟器。下载地址https://drive.google.com/open?id=1UknPpwD3omo4svSS-bQNobB5ekMBv-pM
+（1.5g)
+### 编译运行
 编译方法为在终端中进入每个Project下的build目录，先输入make depend，生成depend.mak文件，目的是链接头文件，为了快速的进行编译。然后输入make，使用gcc编译读取文件夹下的Makefile对源码进行编译。编译完成后在对应的文件夹下生成后缀为.o文件，根据.o文件生成fd.img系统镜像文件。同时在project1-4也生成了运行镜像的文件系统diskc.img。
 生成系统镜像后使用Bochs进行模拟硬件平台，引导运行系统镜像，方法为在终端中进入Project下的build目录，输入bochs就可以直接运行。
 ###	配置文件
@@ -39,21 +48,22 @@ log: ./bochs.out
 #Project0 1-4还需要ata串口驱动器，需要加上：
 ata0-master: type=disk, path=diskc.img, mode=flat, cylinders=40, heads=8, spt=64
 ```
-#前导知识
+# 前导知识
 
-##一、全局描述符表GDT（Global Descriptor Table）
+## 一、全局描述符表GDT（Global Descriptor Table）
  在整个系统中，全局描述符表GDT只有一张(一个处理器对应一个GDT)，GDT可以被放在内存的任何位置，但CPU必须知道GDT的入口，也就是基地址放在哪里，Intel的设计者门提供了一个寄存器GDTR用来存放GDT的入口地址，程序员将GDT设定在内存中某个位置之后，可以通过LGDT指令将GDT的入口地址装入此积存器，从此以后，CPU就根据此寄存器中的内容作为GDT的入口来访问GDT了。GDTR中存放的是GDT在内存中的基地址和其表长界限。
-##二、段选择子（Selector）
+## 二、段选择子（Selector）
 访问全局描述符表是通过“段选择子” 来完成的。段选择子共计16位，如图：
 ![Selector](https://img-blog.csdn.net/20180419153235885?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NhY2FjYWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 段选择子包括三部分：描述符索引（index）、TI、请求特权级（RPL）。index（描述符索引）部分表示所需要的段的描述符在描述符表的位置，由这个位置再根据在GDTR中存储的描述符表基址就可以找到相应的LDT描述符。段选择子中的TI值只有一位0或1，0代表选择子是在GDT，1代表选择子是在LDT。请求特权级（RPL）则代表选择子的特权级，共有4个特权级（0级、1级、2级、3级）。
 
-##三、局部描述符表LDT（Local Descriptor Table）
+## 三、局部描述符表LDT（Local Descriptor Table）
 
    ![LDT](https://img-blog.csdn.net/20180419153222867?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NhY2FjYWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-##四、CPU访问控制
+## 四、CPU访问控制
    Intel的x86处理器是通过Ring级别来进行访问控制的，级别共分4层，从Ring0到Ring3（后面简称R0、R1、R2、R3）。R0层拥有最高的权限，R3层拥有最低的权限。按照Intel原有的构想，应用程序工作在R3层，只能访问R3层的数据；操作系统工作在R0层，可以访问所有层的数据；而其他驱动程序位于R1、R2层，每一层只能访问本层以及权限更低层的数据。
-    这样操作系统工作在最核心层，没有其他代码可以修改它；其他驱动程序工作在R1、R2层，有要求则向R0层调用，这样可以有效保障操作系统的安全性。但现在的OS，包括Windows和Linux都没有采用4层权限，而只是使用2层——R0层和R3层，分别来存放操作系统数据和应用程序数据，
+
+这样操作系统工作在最核心层，没有其他代码可以修改它；其他驱动程序工作在R1、R2层，有要求则向R0层调用，这样可以有效保障操作系统的安全性。但现在的OS，包括Windows和Linux都没有采用4层权限，而只是使用2层——R0层和R3层，分别来存放操作系统数据和应用程序数据，
 
 
 #	项目设计
@@ -62,9 +72,13 @@ ata0-master: type=disk, path=diskc.img, mode=flat, cylinders=40, heads=8, spt=64
 熟悉GeekOS的项目编译、调试和运行环境，掌握GeekOS运行的工作过程。
 ###	项目设计要求
 (1)	搭建GeekOS的编译和调试平台，掌握GeekOS的内核进程工作原理。
+
 (2)	熟悉键盘操作函数，编程实现一个内核进程。此进程的功能是：接收键盘输入的字符并显示到屏幕上，当输入“Ctrl+D”时，结束进程的运行。
+
 3.1.3	项目设计原理
 键盘设备驱动程序提供了一系列的高级接口来使用键盘。键盘事件的逻辑关系为：用户按键引发键盘中断，根据是否按下键，分别在键值表中寻找扫描码对应的按键值，经过处理后将键值放入键盘缓冲区s_queue中，最后通知系统重新调度进程。
+
+
 若用户进程需要从键盘输入信息，可调用Wait_For_Key()函数,该函数首先检查键盘缓冲区是否有按键。如果有，就读取一个键码，如果此时键盘缓冲区中没有按键，就将进程放入键盘事件等待队列s_waitQueue，由于按键触发了键盘中断，键盘中断处理函数Keyboard_Interrupt_Handler就会读取用户按键，将低级键扫描码转换为含ASCII字符的高级代码，并刷新键盘缓冲区，最后唤醒等待按键的进程继续运行。
 ###	项目设计代码
 (1)	编写一个函数，此函数的功能是：接收键盘输入的字符并显示到屏幕上，当输入“Ctrl+D”时就退出。函数代码如下：
@@ -175,6 +189,7 @@ return 0;
 ###	项目设计要求
 本项目要求用户对以下/src/geekos/中的文件进行修改：
 : (1)	user.c：完成函数Spawn()和Switch_To_User_Context()。//*创建进程，切换用户上下文*
+
 : (2)	elf.c：完成函数Parse_ELF_Executable()，要求与项目1相同。//*分析exe文件，用于上下文（context）*
 : (3)	userseg.c：完成函数Destroy_User_Context()、Load_User_Program()、Copy_From_User()、Copy_To_User()和: Switch_To_Address_Space()。//*销毁用户进程上下文，加载用户进行，切换用户地址空间，用来进出内核操作*
 : (4)	kthread.c：完成函数Setup_User_Thread()和Start_User_Thread()。*//设置，启动进程，进入等待队列*
@@ -183,7 +198,10 @@ return 0;
 开始本项目前需要阅读/src/geekos目录中的entry.c、lowlevel.asm、kthread.c、userseg.c，其中在userseg.c中主要关注Destroy_User_Context()和Load_User_Program()两个函数。
 ###	项目设计原理
 进程是可并发执行的程序在某个数据集合上的一次计算活动，也是操作系统资源分配和保护的基本单位。进程和程序有着本质的区别，程序是一些能保存在磁盘上的指令的有序集合，没有任何执行的概念；而进程是程序执行的过程，包括了创建、调度和消亡的整个过程。因此，对系统而言，当用户在系统中输入命令执行一个程序时，它将启动一个进程。
-在GeekOS中，进程的执行过程分为运行态、就绪态和等待态。GeekOS为不同状态的进程准备了不同的进程队列(Thread_Queue)。如果一个进程正处于就绪态，就会在队列s_runQueue中出现；如果一个进程处于等待态，就会在s_reaperWaitQueue队列中出现；如果一个进程准备被销毁，就会在s_graveyardQueue队列中出现。由于处于运行态的进程最多只能有一个，所以没有队列，由指针g_currentThread指向此进程。
+
+在GeekOS中，进程的执行过程分为运行态、就绪态和等待态。
+GeekOS为不同状态的进程准备了不同的进程队列
+(Thread_Queue)。如果一个进程正处于就绪态，就会在队列s_runQueue中出现；如果一个进程处于等待态，就会在s_reaperWaitQueue队列中出现；如果一个进程准备被销毁，就会在s_graveyardQueue队列中出现。由于处于运行态的进程最多只能有一个，所以没有队列，由指针g_currentThread指向此进程。
 
 
 系统中每个进程有且仅有一个进程控制块(PCB)，它记录了有关进程的所有信息，GeekOS的PCB用数据结构Kernel_Thread来表示。GeekOS最早创建的内核级进程是Idle、Reaper和Main。GeekOS在几种情况下会进行进程切换：一是时间片用完时；二是执行进程Idle时；三是进程退出调用Exit函数时；四是进程进入等待态调用Wait函数时。如图3-5所示。用户进程切换通过Switch_To_User_Context函数实现，此函数负责检测当前进程是否为用户级进程，若是就切换至用户进程空间，它由我们自己实现。
@@ -196,6 +214,7 @@ return 0;
 
 为用户级进程创建LDT的步骤是：
 : (1)	调用Allocate_Segment_Descriptor()新建一个LDT描述符；
+
 : (2)	调用Selector()新建一个LDT选择子；
 : (3)	调用Init_Code_Segment_Descriptor()新建一个文本段描述符；
 : (4)	调用Init_Data_Segment_Descriptor()新建一个数据段描述符；
@@ -205,10 +224,11 @@ return 0;
 
 GeekOS的用户级进程创建过程可以描述如下：
 : (1)	Spawn函数导入用户程序并初始化：调用Load_User_Program进行User_Context的初始化及用户级进程空间的分配及: 用户程序各段的装入；
+
 : (2)	Spawn函数调用Start_User_Thread()，初始化一个用户态进程，包括初始化进程Kernel_Thread结构以及调用Setup_User_Thread初始化用户级进程内核堆栈；
 : (3)	最后Spawn函数退出，这时用户级进程已被添加至系统运行进程队列，可以被调度了。
 具体运行过程为在main.c调用函数Spawn(),使用shell.c建立第一个用户态进程，该进程的作用为一直等待读取用户输入指令，然后根据指令读取文件系统中的对应.exe文件，通过系统调用方法来建立用户进程，因为shell进程为用户进程，没有权限分配内存以及其他资源建立进程，只有内核才有权限，所以需要通过系统调用提供建立进程方法，以及读取进程pid方法。同时在切换到内核时候，需要把在用户级进程数据复制进内核栈进行继续操作。
-###项目设计代码
+### 项目设计代码
 部分代码，其余详见附录。
 
 ```
@@ -707,3 +727,7 @@ struct.Kernel_Thread*pThread;
 Spawn("/c/shell.exe","/c/shell.exe",&pThread);}
 ```
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTI0MTUwMzM2MSwtNTAxNzI2MTA3LC01Mj
+Q0NzYxMiwtMzM0MjEwNTY4XX0=
+-->
