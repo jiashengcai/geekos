@@ -13,6 +13,7 @@ Linux操作系统 |	Linux发行版Ubuntu9.04
 
 ## GeekOS-0.3.0
 基于X86的GeekOS教学型类Linux操作系统.GeekOS主要用于操作系统课程设计,目的是使学生能够实际动手参与到一个操作系统的开发工作中学生可以在Linux或Unix环境或/windows下使用BochsPC模拟器进行开发,且其针对进程、文件系统、存储管理等操作系统核心内容分别设计了7个难度逐渐增加的项目供教师选择.出于教学目的,这个系统内核设计简单,让学生易于阅读、设计和添加代码,但它又涵盖了操作系统课程的核心内容,能够满足操作系统课程教学的需求,却又兼备实用性,它可以运行在真正的X86PC硬件平台.GeekOS由一个基本的操作系统内核作为基础,已经实现如下功能:
+
 (1)	操作系统与硬件之间的所有必备接口。
 
 (2)	系统引导、实模式到保护模式的转换、中断调用及异常处理。
@@ -726,5 +727,6 @@ Spawn("/c/shell.exe","/c/shell.exe",&pThread);}
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyNDQ3NjEyLC0zMzQyMTA1NjhdfQ==
+eyJoaXN0b3J5IjpbMzE4MzM0OTM0LC01MjQ0NzYxMiwtMzM0Mj
+EwNTY4XX0=
 -->
