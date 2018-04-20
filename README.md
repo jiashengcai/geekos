@@ -187,6 +187,7 @@ return 0;
 ###	项目设计要求
 本项目要求用户对以下/src/geekos/中的文件进行修改：
 : (1)	user.c：完成函数Spawn()和Switch_To_User_Context()。//*创建进程，切换用户上下文*
+
 : (2)	elf.c：完成函数Parse_ELF_Executable()，要求与项目1相同。//*分析exe文件，用于上下文（context）*
 : (3)	userseg.c：完成函数Destroy_User_Context()、Load_User_Program()、Copy_From_User()、Copy_To_User()和: Switch_To_Address_Space()。//*销毁用户进程上下文，加载用户进行，切换用户地址空间，用来进出内核操作*
 : (4)	kthread.c：完成函数Setup_User_Thread()和Start_User_Thread()。*//设置，启动进程，进入等待队列*
@@ -195,7 +196,10 @@ return 0;
 开始本项目前需要阅读/src/geekos目录中的entry.c、lowlevel.asm、kthread.c、userseg.c，其中在userseg.c中主要关注Destroy_User_Context()和Load_User_Program()两个函数。
 ###	项目设计原理
 进程是可并发执行的程序在某个数据集合上的一次计算活动，也是操作系统资源分配和保护的基本单位。进程和程序有着本质的区别，程序是一些能保存在磁盘上的指令的有序集合，没有任何执行的概念；而进程是程序执行的过程，包括了创建、调度和消亡的整个过程。因此，对系统而言，当用户在系统中输入命令执行一个程序时，它将启动一个进程。
-在GeekOS中，进程的执行过程分为运行态、就绪态和等待态。GeekOS为不同状态的进程准备了不同的进程队列(Thread_Queue)。如果一个进程正处于就绪态，就会在队列s_runQueue中出现；如果一个进程处于等待态，就会在s_reaperWaitQueue队列中出现；如果一个进程准备被销毁，就会在s_graveyardQueue队列中出现。由于处于运行态的进程最多只能有一个，所以没有队列，由指针g_currentThread指向此进程。
+
+在GeekOS中，进程的执行过程分为运行态、就绪态和等待态。
+GeekOS为不同状态的进程准备了不同的进程队列
+(Thread_Queue)。如果一个进程正处于就绪态，就会在队列s_runQueue中出现；如果一个进程处于等待态，就会在s_reaperWaitQueue队列中出现；如果一个进程准备被销毁，就会在s_graveyardQueue队列中出现。由于处于运行态的进程最多只能有一个，所以没有队列，由指针g_currentThread指向此进程。
 
 
 系统中每个进程有且仅有一个进程控制块(PCB)，它记录了有关进程的所有信息，GeekOS的PCB用数据结构Kernel_Thread来表示。GeekOS最早创建的内核级进程是Idle、Reaper和Main。GeekOS在几种情况下会进行进程切换：一是时间片用完时；二是执行进程Idle时；三是进程退出调用Exit函数时；四是进程进入等待态调用Wait函数时。如图3-5所示。用户进程切换通过Switch_To_User_Context函数实现，此函数负责检测当前进程是否为用户级进程，若是就切换至用户进程空间，它由我们自己实现。
@@ -720,5 +724,5 @@ Spawn("/c/shell.exe","/c/shell.exe",&pThread);}
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxMzE4MjM4MiwtMzM0MjEwNTY4XX0=
+eyJoaXN0b3J5IjpbMTYxMjIzODE2MiwtMzM0MjEwNTY4XX0=
 -->
