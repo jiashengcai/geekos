@@ -716,3 +716,6 @@ struct.Kernel_Thread*pThread;
 Spawn("/c/shell.exe","/c/shell.exe",&pThread);}
 ```
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTMzNDIxMDU2OF19
+-->
