@@ -32,6 +32,7 @@ Bochs是一个x86硬件平台的开源模拟器。它可以模拟各种硬件的
 VMWare虚拟机软件是一个“虚拟PC”软件，它使你可以在一台机器上同时运行二个或更多Windows、DOS、LINUX系统。与“多启动”系统相比，VMWare采用了完全不同的概念。多系统在一个时刻只能运行一个系统，在系统切换时需要重新启动机器。
 ## 开发过程
 为顺利的进行课程设计开发，避免出现软件版本不兼容导致一系列问题，使用了指导老师提供的虚拟机镜像以及虚拟机软件Vmware，虚拟机操作系统为Ubuntu9，其中包含了一份geekOS源码，以及安装好的Bochs硬件模拟器。下载地址https://drive.google.com/open?id=1UknPpwD3omo4svSS-bQNobB5ekMBv-pM
+（1.5g)
 ### 编译运行
 编译方法为在终端中进入每个Project下的build目录，先输入make depend，生成depend.mak文件，目的是链接头文件，为了快速的进行编译。然后输入make，使用gcc编译读取文件夹下的Makefile对源码进行编译。编译完成后在对应的文件夹下生成后缀为.o文件，根据.o文件生成fd.img系统镜像文件。同时在project1-4也生成了运行镜像的文件系统diskc.img。
 生成系统镜像后使用Bochs进行模拟硬件平台，引导运行系统镜像，方法为在终端中进入Project下的build目录，输入bochs就可以直接运行。
@@ -727,6 +728,6 @@ Spawn("/c/shell.exe","/c/shell.exe",&pThread);}
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMTcyNjEwNywtNTI0NDc2MTIsLTMzND
-IxMDU2OF19
+eyJoaXN0b3J5IjpbMTI0MTUwMzM2MSwtNTAxNzI2MTA3LC01Mj
+Q0NzYxMiwtMzM0MjEwNTY4XX0=
 -->
