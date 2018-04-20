@@ -1,4 +1,5 @@
 [toc] 
+[MENU]
 # 概述
 操作系统（英语：operating system，缩写：OS）是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的内核与基石。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互的操作界面。
 计算机操作系统原理课程是计算机科学与技术及相关专业的核心课程之一，对理论与实践要求都很高，历来为计算机及信息学科所重视。操作系统课程设计正是该课程实践环节的集中表现，不仅可使学生巩固理论学习的概念、原理、设计、算法及数据结构，同时培养开发大型软件所应拥有的系统结构设计和软件工程素养。对该课程考核体系的构建可以促进学 生设计能力、创新能力和科学素养的全面提升。
@@ -730,6 +731,7 @@ Spawn("/c/shell.exe","/c/shell.exe",&pThread);}
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzMxOTc0MDksMTI0MTUwMzM2MSwtNT
-AxNzI2MTA3LC01MjQ0NzYxMiwtMzM0MjEwNTY4XX0=
+eyJoaXN0b3J5IjpbMTQyOTg0MTI5MCwtMTI3MzE5NzQwOSwxMj
+QxNTAzMzYxLC01MDE3MjYxMDcsLTUyNDQ3NjEyLC0zMzQyMTA1
+NjhdfQ==
 -->
