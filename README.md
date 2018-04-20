@@ -138,6 +138,7 @@ Executable and linking format(ELF)文件是x86 Linux系统下的一种常用目�
 ③	共享目标文件(shared object file)，连接器可将它与其它可重定位文件和共享目标文件连接成其它的目标文件，动态连接器又可将它与可执行文件和其它共享目标文件结合起来创建一个进程映像。
 为了方便和高效，ELF文件内容有两个平行的视图:一个是程序连接角度，另一个是程序运行角度。GeekOS中的用户程序全部在系统的编译阶段完成编译和连接，形成可执行文件，用户可执行文件保存在PFAT文件系统中，如图所示。
 在Parse_ELF_Executable函数中，此函数的作用为根据ELF文件格式，从exeFileData指向的内容中得到ELF文件头，继续分析可得到程序头和程序代码段等信息。
+
 连接程序视图 |执行程序视图 
 -----|--
 ELF头部|	ELF 头部
@@ -147,7 +148,8 @@ ELF头部|	ELF 头部
 节区n|	段2
 ...	|段2
 ...	|...
-节区头部表	节区头部表（可选）
+节区头部表|	节区头部表（可选）
+
 (2)	建立线程过程如图3 2所示
  ![建立线程](https://img-blog.csdn.net/2018041915475560?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NhY2FjYWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 图 3 2
@@ -728,6 +730,6 @@ Spawn("/c/shell.exe","/c/shell.exe",&pThread);}
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MTUwMzM2MSwtNTAxNzI2MTA3LC01Mj
-Q0NzYxMiwtMzM0MjEwNTY4XX0=
+eyJoaXN0b3J5IjpbLTEyNzMxOTc0MDksMTI0MTUwMzM2MSwtNT
+AxNzI2MTA3LC01MjQ0NzYxMiwtMzM0MjEwNTY4XX0=
 -->
