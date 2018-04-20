@@ -212,6 +212,7 @@ GeekOS为不同状态的进程准备了不同的进程队列
 
 为用户级进程创建LDT的步骤是：
 : (1)	调用Allocate_Segment_Descriptor()新建一个LDT描述符；
+
 : (2)	调用Selector()新建一个LDT选择子；
 : (3)	调用Init_Code_Segment_Descriptor()新建一个文本段描述符；
 : (4)	调用Init_Data_Segment_Descriptor()新建一个数据段描述符；
@@ -221,10 +222,11 @@ GeekOS为不同状态的进程准备了不同的进程队列
 
 GeekOS的用户级进程创建过程可以描述如下：
 : (1)	Spawn函数导入用户程序并初始化：调用Load_User_Program进行User_Context的初始化及用户级进程空间的分配及: 用户程序各段的装入；
+
 : (2)	Spawn函数调用Start_User_Thread()，初始化一个用户态进程，包括初始化进程Kernel_Thread结构以及调用Setup_User_Thread初始化用户级进程内核堆栈；
 : (3)	最后Spawn函数退出，这时用户级进程已被添加至系统运行进程队列，可以被调度了。
 具体运行过程为在main.c调用函数Spawn(),使用shell.c建立第一个用户态进程，该进程的作用为一直等待读取用户输入指令，然后根据指令读取文件系统中的对应.exe文件，通过系统调用方法来建立用户进程，因为shell进程为用户进程，没有权限分配内存以及其他资源建立进程，只有内核才有权限，所以需要通过系统调用提供建立进程方法，以及读取进程pid方法。同时在切换到内核时候，需要把在用户级进程数据复制进内核栈进行继续操作。
-###项目设计代码
+### 项目设计代码
 部分代码，其余详见附录。
 
 ```
@@ -724,5 +726,5 @@ Spawn("/c/shell.exe","/c/shell.exe",&pThread);}
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxMjIzODE2MiwtMzM0MjEwNTY4XX0=
+eyJoaXN0b3J5IjpbLTUyNDQ3NjEyLC0zMzQyMTA1NjhdfQ==
 -->
